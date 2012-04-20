@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <script src="../../Scripts/BookDisplay.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                <h1>Online Voting System</h1>
+            </div>
+
+             <div id="logindisplay">
+     @*   @Html.Partial("_LogOnPartial")*@
+      
+            </div>
+            <br />
+            <br />
+            <div id="menucontainer">
+
+                <ul id="menu">
+                    <li>@Html.ActionLink("Profile", "Profile", "VoterMain")</li>
+                    @*Actually Profile requires an ID, so make sure when you go to other click and come back, make sure everything works f9*@
+                    <li>@Html.ActionLink("Vote","Vote","Votermain")</li>
+                     <li>@Html.ActionLink("Change Password","ChangePassword","Votermain")</li>
+                    <li>@Html.ActionLink("Logout","Index","Home")</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="main">
+            @RenderBody()
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿@model OnlineVotingSystem.Models.Candidate
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_CandidateLayout.cshtml";
+}
+
+<h2>Profile</h2>
+
+<fieldset>
+    <legend>Candidate</legend>
+
+    <div class="display-label">Society</div>
+    <div class="display-field">@Model.Society</div>
+
+    <div class="display-label">Manifesto</div>
+    <div class="display-field">@Model.Manifesto</div>
+
+    <div class="display-label">Votes</div>
+    <div class="display-field">@Model.Votes</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CandidateId }) |
+    @Html.ActionLink("Back to Profile", "Profile", new { ID = Model.CandidateId })
+</p>
+

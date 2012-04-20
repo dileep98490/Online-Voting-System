@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OnlineVotingSystem.Models.Candidate>
+
+
+<table id="SearchResults">
+    <tr>
+    <th></th>        
+    <th>
+        Candidate ID
+        </th>
+        <th>
+            Society
+        </th>
+        <th>
+            Manifesto
+        </th>
+        <th>
+            Votes
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { CandidateId=item.CandidateId }) |
+            @Html.ActionLink("Details", "Details", new { CandidateId=item.CandidateId }) |
+            @Html.ActionLink("Delete", "Delete", new { CandidateId=item.CandidateId })
+        </td>
+        <td>@item.CandidateId</td>
+        <td>
+            @item.Society
+        </td>
+        <td>
+            @item.Manifesto
+        </td>
+        <td>
+            @item.Votes
+        </td>
+    </tr>
+}
+
+</table>

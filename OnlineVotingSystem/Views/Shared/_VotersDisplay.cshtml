@@ -1,0 +1,52 @@
+﻿@model IEnumerable<OnlineVotingSystem.Models.Voter>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table id="SearchResults">
+    <tr>
+        <th></th>
+        <th>
+            VoterID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            EMail
+        </th>
+        <th>
+            Voted
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { VoterId = item.VoterId }) |
+            @Html.ActionLink("Details", "Details", new { VoterId = item.VoterId }) |
+            @Html.ActionLink("Delete", "Delete", new { VoterId = item.VoterId })
+        </td>
+        <td>
+            @item.VoterId
+        </td>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.Department
+        </td>
+        <td>
+            @item.EMail
+        </td>
+        <td>
+            @item.Voted
+        </td>
+    </tr>
+}
+
+</table>

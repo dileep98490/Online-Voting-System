@@ -1,0 +1,94 @@
+﻿@model IEnumerable<OnlineVotingSystem.Models.Voter>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Voters</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@*@using (@Ajax.BeginForm("Search","AdminVoter",new AjaxOptions{
+HttpMethod="GET",
+    InsertionMode=InsertionMode.Replace,
+UpdateTargetId="SearchResults",
+}))
+{
+<input type="text" name="q" />
+<input type="submit" value="search" />
+}
+<table id="SearchResults">
+</table>
+<div id="progr">
+    <img src = @Url.Content("~/Content/images/ajax_loader.gif") alt="Loading"/>
+    </div>
+*@
+
+@using (Ajax.BeginForm("search", "AdminVoter", new AjaxOptions
+{
+    HttpMethod="GET",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "SearchResults"
+}))
+{
+<input type="text" name="q" />
+
+    <select name="Filter"><option>Name</option>
+    <option>Department</option>
+    <option>E-mail</option>
+    </select>
+    <input type="submit" value="Search" />
+}
+<br />
+@*<table id="SearchResults">
+</table>*@
+
+@Html.Partial("_VotersDisplay",Model)
+
+
+
+@*<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            EMail
+        </th>
+        <th>
+            Voted
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { VoterId = item.VoterId }) |
+            @Html.ActionLink("Details", "Details", new { VoterId = item.VoterId }) |
+            @Html.ActionLink("Delete", "Delete", new { VoterId = item.VoterId })
+        </td>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.Department
+        </td>
+        <td>
+            @item.EMail
+        </td>
+        <td>
+            @item.Voted
+        </td>
+    </tr>
+}
+
+</table>*@
+

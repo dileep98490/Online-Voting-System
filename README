@@ -1,0 +1,5 @@
+Online Voting System created using ASP.NET MVC and C#
+
+It took me two weeks to build this website. I am familiar to ASP.NET, but not MVC. Thanks to Microsoft for providing the videos from Plural sight for free of cost, that helped me learn about it. Also, I learnt C#, along the way :)
+
+Also, this uses LINQ for making connection with SQL databases and it's a very cool one.

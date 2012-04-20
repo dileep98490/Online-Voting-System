@@ -1,0 +1,37 @@
+﻿@model OnlineVotingSystem.Models.SystemDbNaya
+
+@{
+    ViewBag.Title = "Vote";
+    Layout = "~/Views/Shared/_VoterLayout.cshtml";
+}
+
+<h2>Vote</h2>
+@using (Html.BeginForm())
+{<fieldset>
+<legend>Vote for Change</legend>
+@foreach (string item in ViewBag.items)
+    {
+   
+       string s=item+"Id";
+         s="\""+s+"\"";
+    
+<div class="editor-label">
+            @Html.Label(item)
+        </div>
+        <div class="editor-field">
+           @* <select id=@Html.Raw(s) name=@Html.Raw(s)> *@
+            @foreach (var man in Model.Candidates.Where(r => r.Society == item))
+            {
+            <input type="radio" name=@Html.Raw(s) value="@Html.Raw(man.CandidateId)"/>@Html.Raw(man.CandidateId)
+            @*man.CandidateId*@
+           
+            }
+            
+            
+        </div>
+    }
+    <br />
+   <input type="submit" value="Vote"/>
+   </fieldset>
+}
+<p>Please note that once you submit your vote, you may not vote again</p>

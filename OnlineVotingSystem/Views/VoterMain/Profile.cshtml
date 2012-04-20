@@ -1,0 +1,29 @@
+﻿@model OnlineVotingSystem.Models.Voter
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_VoterLayout.cshtml";
+}
+
+<h2>Profile</h2>
+
+<fieldset>
+    <legend>Voter</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Department</div>
+    <div class="display-field">@Model.Department</div>
+
+    <div class="display-label">EMail</div>
+    <div class="display-field">@Model.EMail</div>
+
+    <div class="display-label">Voted</div>
+    <div class="display-field">@Model.Voted</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.VoterId }) 
+   
+</p>
+

@@ -1,0 +1,33 @@
+﻿@model OnlineVotingSystem.Models.SystemDbNaya
+
+@{
+    ViewBag.Title = "Analysis";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Analysis</h2>
+<table>
+<tr><th>Name of the Society</th>
+<th>Leading Candidate</th>
+<th>Leading than</th>
+<th>Lead by</th>
+</tr>
+@foreach (string society in ViewBag.items)
+{
+     var cand=Model.Candidates.Where(r=>r.Society==society); 
+       int m=cand.Max(r=>r.Votes);
+    var can=cand.Where(r=>r.Votes==m).Take(1).Single();
+    var cand2 = Model.Candidates.Where(r => r.Society == society && r.CandidateId!=can.CandidateId);
+    int m2=cand2.Max(r=>r.Votes);
+    var can2 = cand2.Where(r => r.Votes == m2).Take(1).Single();
+    <tr>
+    <td>@society</td>
+ 
+    <td>@Model.Voters.Single(r=>r.VoterId==can.CandidateId).Name</td>
+    <td>@Model.Voters.Single(r=>r.VoterId==can2.CandidateId).Name
+    </td>
+    <td>@(m-m2)</td>
+    </tr>
+}
+</table>
+
